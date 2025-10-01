@@ -55,6 +55,7 @@ graph TD;
     end
     B -->|`ecom_analytics_dag`| F;
     F -->|4. Visualization| G[ Looker Studio Dashboard];
+```
 
 
 Follow these steps to replicate the project environment.
