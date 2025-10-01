@@ -1,0 +1,23 @@
+# E-commerce Sales Performance & Customer Analytics Pipeline
+
+This project demonstrates building a robust data pipeline to ingest, transform, and analyze e-commerce sales data, providing valuable insights into sales performance and customer behavior. It leverages Google Cloud Platform (GCP) services, orchestrates ETL processes with Apache Airflow (via Cloud Composer), and visualizes the results in Looker Studio.
+
+## Project Overview
+
+The pipeline processes raw e-commerce transaction data, models it into a query-optimized data warehouse (Star Schema) in BigQuery, and presents key business metrics through interactive dashboards in Looker Studio. Apache Airflow orchestrates all data movement and transformations, running on GCP's Cloud Composer.
+
+## Architecture
+
+[Raw CSV/JSON in GCS] --(Ingestion)--> [Staging BigQuery Table]
+|
+V
+[Cloud Composer (Airflow)] --(ETL orchestration)-->
+|
+V
+[BigQuery Data Warehouse (Star Schema)]
+| (dim_dates, dim_customers, dim_products, fact_sales)
+V
+[BigQuery Aggregated Tables]
+| (agg_daily_sales, agg_customer_segments_monthly, top_n_products_monthly)
+V
+[Looker Studio Dashboards]

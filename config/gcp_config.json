@@ -1,0 +1,8 @@
+{
+  "gcp_project_id": "tribal-logic-470305-u2",
+  "gcs_raw_data_bucket": "sales_performance_customer_analysis",
+  "bigquery_dataset_staging": "ecommerce_staging",
+  "bigquery_dataset_dwh": "ecommerce_dwh",
+  "bigquery_dataset_analytics": "ecommerce_analytics",
+  "gcs_dags_folder": "dags"
+}
