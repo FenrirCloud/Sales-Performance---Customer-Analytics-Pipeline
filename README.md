@@ -13,8 +13,6 @@ A scalable, cloud-native data pipeline that automates the ingestion, transformat
 ##  Final Dashboard
 
 *A preview of the interactive dashboard built with Looker Studio, providing key insights into sales performance and customer segmentation.*
->
-> `![Look-er Studio Dashboard](looker_studio/dashboard_screenshots/final_dashboard.png)`
 
 ---
 
