@@ -1,4 +1,4 @@
-# 📊 End-to-End E-commerce Analytics Pipeline on GCP
+#  End-to-End E-commerce Analytics Pipeline on GCP
 
 A scalable, cloud-native data pipeline that automates the ingestion, transformation, and analysis of e-commerce data, culminating in an interactive business intelligence dashboard.
 
@@ -10,7 +10,7 @@ A scalable, cloud-native data pipeline that automates the ingestion, transformat
 
 ---
 
-## ✨ Final Dashboard
+##  Final Dashboard
 
 *A preview of the interactive dashboard built with Looker Studio, providing key insights into sales performance and customer segmentation.*
 
@@ -20,26 +20,26 @@ A scalable, cloud-native data pipeline that automates the ingestion, transformat
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
-*   **☁️ Cloud-Native Architecture:** Built entirely on Google Cloud Platform for scalability and reliability.
-*   **⚙️ Automated ETL Orchestration:** Uses Apache Airflow to manage the full workflow with scheduling, dependencies, and retries.
-*   **📈 Advanced Customer Segmentation:** Implements **RFM (Recency, Frequency, Monetary) analysis** with complex SQL to categorize customers into segments like 'Champions', 'At Risk', and 'Loyal'.
-*   **⭐ Dimensional Data Modeling:** Transforms raw data into a query-optimized Star Schema, perfect for analytical workloads.
-*   **📊 Interactive Visualization:** Connects the clean, aggregated data to Looker Studio for insightful business reporting.
+*   ** Cloud-Native Architecture:** Built entirely on Google Cloud Platform for scalability and reliability.
+*   ** Automated ETL Orchestration:** Uses Apache Airflow to manage the full workflow with scheduling, dependencies, and retries.
+*   ** Advanced Customer Segmentation:** Implements **RFM (Recency, Frequency, Monetary) analysis** with complex SQL to categorize customers into segments like 'Champions', 'At Risk', and 'Loyal'.
+*   ** Dimensional Data Modeling:** Transforms raw data into a query-optimized Star Schema, perfect for analytical workloads.
+*   ** Interactive Visualization:** Connects the clean, aggregated data to Looker Studio for insightful business reporting.
 
 ---
 
-## 🏗️ Architecture Diagram
+##  Architecture Diagram
 
 The pipeline follows a modern ETL approach, moving data from a raw landing zone to a structured data warehouse and finally to aggregated analytics tables for fast dashboarding.
 
 ```mermaid
 graph TD;
-    A[📂 Raw CSV Data in GCS Bucket] -->|Orchestrated by| B(🌬️ Cloud Composer / Airflow);
-    B -->|1. Ingest & Stage| C{🗂️ BigQuery Staging Dataset};
-    C -->|`ecom_staging_dag`| D[🧼 Cleaned Staging Table];
-    D -->|2. DWH Transformation| E{⭐ BigQuery DWH Dataset};
+    A[ Raw CSV Data in GCS Bucket] -->|Orchestrated by| B( Cloud Composer / Airflow);
+    B -->|1. Ingest & Stage| C{ BigQuery Staging Dataset};
+    C -->|`ecom_staging_dag`| D[ Cleaned Staging Table];
+    D -->|2. DWH Transformation| E{ BigQuery DWH Dataset};
     subgraph "Star Schema"
         E_dim1[dim_customers]
         E_dim2[dim_products]
@@ -47,14 +47,14 @@ graph TD;
         E_fact[fact_sales]
     end
     B -->|`ecom_dwh_dag`| E;
-    E -->|3. Analytics Aggregation| F{📈 BigQuery Analytics Dataset};
+    E -->|3. Analytics Aggregation| F{ BigQuery Analytics Dataset};
     subgraph "Aggregated Tables"
        F_agg1[agg_daily_sales]
        F_agg2[agg_customer_segments]
        F_agg3[top_n_products_monthly]
     end
     B -->|`ecom_analytics_dag`| F;
-    F -->|4. Visualization| G[📊 Looker Studio Dashboard];
+    F -->|4. Visualization| G[ Looker Studio Dashboard];
 
 
 Follow these steps to replicate the project environment.
