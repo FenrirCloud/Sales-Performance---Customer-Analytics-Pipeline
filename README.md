@@ -55,3 +55,68 @@ graph TD;
     end
     B -->|`ecom_analytics_dag`| F;
     F -->|4. Visualization| G[📊 Looker Studio Dashboard];
+
+
+Follow these steps to replicate the project environment.
+Prerequisites
+
+    A Google Cloud Platform project with billing enabled.
+
+    A running Cloud Composer 2 environment.
+
+    Enabled APIs: Cloud Composer, BigQuery, Cloud Storage.
+
+    gcloud CLI and gsutil tools installed (or use Cloud Shell).
+
+1. Create GCP Resources
+
+    Create GCS Bucket for Raw Data:
+    code Bash
+
+    
+gsutil mb -p YOUR_PROJECT_ID gs://your-raw-data-bucket-name
+
+  
+
+Create BigQuery Datasets:
+code Bash
+
+        
+    bq mk --location=US ecommerce_staging
+    bq mk --location=US ecommerce_dwh
+    bq mk --location=US ecommerce_analytics
+
+      
+
+2. Configure & Deploy
+
+    Configure: Update the config/gcp_config.json file with your project and bucket details.
+
+    Upload Data: Download the Online Retail Dataset and upload it to your GCS bucket.
+    code Bash
+
+    
+gsutil cp data/data.csv gs://your-raw-data-bucket-name/raw_sales/sample_e_commerce_data.csv
+
+  
+
+Upload Code to Composer: Sync the project folders to your environment's DAGs bucket.
+code Bash
+
+        
+    # Find your DAGs bucket URI in the Composer environment details page
+    gsutil -m rsync -r ./dags gs://<YOUR_COMPOSER_DAGS_BUCKET_URI>
+    gsutil -m rsync -r ./sql gs://<YOUR_COMPOSER_DAGS_BUCKET_URI>/sql
+    gsutil -m rsync -r ./config gs://<YOUR_COMPOSER_DAGS_BUCKET_URI>/config
+
+      
+
+3. Run and Visualize
+
+    Open the Airflow UI from the Cloud Composer page.
+
+    Un-pause the four ecom_* DAGs.
+
+    Trigger the pipeline by running the ecom_ingestion_dag.
+
+    Once the pipeline completes, connect Looker Studio to the ecommerce_analytics BigQuery dataset and build your dashboards!
